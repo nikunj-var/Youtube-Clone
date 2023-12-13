@@ -1,12 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "../utils/appSlice";
 const Head = () => {
+  const dispatch = useDispatch();
+  const toggleMenuHandler = () => {
+    dispatch(toggleMenu());
+  };
   return (
     <div className="grid grid-flow-col p-2 m-2 shadow-lg">
       <div className="flex col-span-1">
         <img
-          className=" h-8 "
+          className=" h-8 cursor-pointer"
           alt="menuicon"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/2048px-Hamburger_icon.svg.png"
+          onClick={() => toggleMenuHandler()}
         />
         <img
           className="h-8 ml-4"
@@ -15,8 +22,14 @@ const Head = () => {
         />
       </div>
       <div className=" col-span-10 text-center">
-        <input type="text" placeholder="Search anything" className=" w-2/4 p-1 border border-gray-400 rounded-l-full" />
-        <button className="border border-gray-400 p-1 rounded-r-full bg-slate-200">🔍</button>
+        <input
+          type="text"
+          placeholder="Search"
+          className=" w-2/4 p-1 border border-gray-400 rounded-l-full"
+        />
+        <button className="border border-gray-400 p-1 rounded-r-full bg-slate-200">
+          🔍
+        </button>
       </div>
       <div className="col-span-1">
         <img
