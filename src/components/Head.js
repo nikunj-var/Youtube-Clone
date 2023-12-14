@@ -7,16 +7,16 @@ const Head = () => {
     dispatch(toggleMenu());
   };
   return (
-    <div className="grid grid-flow-col p-2 m-2 shadow-lg">
+    <div className="grid grid-flow-col p-3 m-2 shadow-lg">
       <div className="flex col-span-1">
         <img
-          className=" h-8 cursor-pointer"
+          className=" h-7 cursor-pointer"
           alt="menuicon"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/2048px-Hamburger_icon.svg.png"
           onClick={() => toggleMenuHandler()}
         />
         <img
-          className="h-8 ml-4"
+          className="h-8 w-28 ml-4"
           alt="youtube-icon"
           src="https://static.india.com/wp-content/uploads/2023/06/youtube-1.jpg?impolicy=Medium_Resize&w=1200&h=800"
         />
