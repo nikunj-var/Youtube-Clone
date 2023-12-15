@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import { Youtube_Search_Api } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
 const Head = () => {
   const dispatch = useDispatch();
   const toggleMenuHandler = () => {
@@ -11,11 +12,20 @@ const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const searchCache = useSelector((store) => store.search);
+
   useEffect(() => {
     // make an api call after every key press
     // but if the diff between 2 api calls is < 200ms decline the api call
 
-    const timer = setTimeout(() => getSearchSuggestions(), 200);
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
+    }, 200);
 
     // key - i pressed
     //  - render the component
@@ -41,6 +51,13 @@ const Head = () => {
     const data = await fetch(Youtube_Search_Api + searchQuery);
     const json = await data.json();
     setSuggestions(json[1]);
+
+    // update cache
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+      })
+    );
     // console.log("searched data = ", json[1]);
   };
   return (
@@ -97,3 +114,5 @@ const Head = () => {
   );
 };
 export default Head;
+
+//  ! if we search any item that make an api call but if we again search that element we have to handle that in that search there is no api call it should store in cache.
