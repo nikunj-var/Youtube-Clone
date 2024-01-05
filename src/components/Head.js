@@ -118,3 +118,24 @@ export default Head;
 //  ! if we search any item that make an api call but if we again search that element we have to handle that in that search there is no api call it should store in cache.
 
 // N level nested comments
+
+
+// Episode 16-
+// Challenges on 
+// Data Layer - Get Data Live
+// UI Layer - Update the ui
+
+
+// how to get data live - two ways to get data live
+
+// web sockets
+//    - there is bidirectional flow between ui and server
+//    - there is no regular interval
+//    - trading apps, binance, whatsapp
+
+// api polling
+//    - there is single direction flow
+//    - there is regular interval
+//    - gmail
+
+// Youtube uses Api polling

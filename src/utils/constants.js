@@ -6,3 +6,5 @@ export const Youtube_Videos_Api =
 
 export const Youtube_Search_Api =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+
+export const OFFSET_LIVE_CHAT = 100;
