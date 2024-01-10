@@ -139,3 +139,5 @@ export default Head;
 //    - gmail
 
 // Youtube uses Api polling
+
+// Read React.StrictMode

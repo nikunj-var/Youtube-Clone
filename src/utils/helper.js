@@ -189,4 +189,32 @@ export function makeid(length) {
     }
     return result;
 }
+function isPrime(num) {
+  if (num <= 1) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
 
+export function findNthPrime(n) {
+  if (n <= 0) {
+    return "Please enter a positive integer greater than 0.";
+  }
+
+  let count = 0;
+  let candidate = 2;
+
+  while (count < n) {
+    if (isPrime(candidate)) {
+      count++;
+    }
+    if (count < n) {
+      candidate++;
+    }
+  }
+
+  return candidate;
+}
